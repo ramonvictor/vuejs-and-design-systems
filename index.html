@@ -1,0 +1,391 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Vue.js and Design Systems</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css">
+		<link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+		<link rel="stylesheet" href="css/main.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			link.rel = 'stylesheet';
+			var link = document.createElement( 'link' );
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section class="no-handle">
+					<h1>Vue.js and Design Systems</h1>
+					<h2><a href="https://twitter.com/ramonvictor">@ramonvictor</a></h2>
+				</section>
+				<section>
+					<!-- TODO: add big background image -->
+					<h2>Who am I?</h2>
+					<ul>
+						<li>Originally from Recife, Brazil</li>
+						<li>4+ years living in Amsterdam</li>
+						<li>10+ years working with Frontend and UX</li>
+						<li>Principal Frontend Developer @ Booking.com</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Agenda</h2>
+					<ul>
+						<li>Design System: what/why</li>
+						<li>VueJS & building a component library</li>
+						<li>Learnings</li>
+						<li>Takeaways</li>
+						<li>Resources</li>
+					</ul>
+				</section>
+				<section class="topic-transition-slide">
+					<h1>What is a Design System?</h1>
+				</section>
+				<section>
+					<h2 class="sticky-small-header is-hidden">What is a Design System?</h2>
+					<blockquote class="quote-block">
+						A design system is a set of <strong>interconnected patterns and shared practices</strong> coherently organized to <strong>serve the purpose of a digital product</strong>.
+					</blockquote>
+					<cite>– Alla Kholmatova, Design Systems book</cite>
+				</section>
+				<section>
+					<h2 class="sticky-small-header is-hidden">What is a Design System?</h2>
+					<h3>It enables...</h3>
+					<ul>
+						<li>Common design language</li>
+						<li>Consistent cross-product UI and usability</li>
+						<li>Built-in a11y</li>
+						<li>Cross-discipline collaboration</li>
+						<li>Faster time-to-market</li>
+					</ul>
+				</section>
+				<section>
+					<h2 class="sticky-small-header">What a Design System is NOT?</h2>
+					<ul>
+						<li>Just a collection of components</li>
+						<li>Silver bullet solution to all UX problems</li>
+						<li>Just a toolkit for Designers</li>
+					</ul>
+				</section>
+				<section>
+					<h2 class="sticky-small-header">Design System key artifacts</h2>
+					<!-- TODO: replace this... -->
+					<img src="lib/img/system-layers-diagram.png" alt="" class="img-no-border">
+				</section>
+				<section>
+					<h2 class="sticky-small-header">Big companies using Design Systems</h2>
+					<!-- TODO: add the logo images... -->
+					<ul>
+						<li>Google</li>
+						<li>Airbnb</li>
+						<li>IBM</li>
+						<li>Atlassian</li>
+						<li>Github</li>
+						<li>and many more...</li>
+					</ul>
+				</section>
+				<section>
+					<h1>Why is it important for Booking.com?</h1>
+				</section>
+				<section>
+						<h2 class="sticky-small-header is-hidden">Why is it important for Booking.com?</h2>
+						<h3>Identified problems</h3>
+						<ul>
+							<li>Repetitive work</li>
+							<li>Organizational structure reflected on UI</li>
+							<li>IT head count hyper growth</li>
+							<li>New products being built</li>
+							<li>Lack of cross-platform design alignment</li>
+						</ul>
+					</section>
+				<section>
+					<h2 class="sticky-small-header is-hidden">Why is it important for Booking.com?</h2>
+					<p style="font-size: 50px;">In simple words, for us it boils down to<br><strong style="font-size: 150%;">enabling design at scale</strong>.</p>
+				</section>
+				<section>
+					<h2 class="sticky-small-header is-hidden">Why is it important for Booking.com?</h2>
+					<h3>Key facts about <img src="lib/img/bookingcom.png" width="350" alt="" class="img-no-border" style="position: relative;
+						top: 17px;"></h3>
+					
+					<ul>
+						<li>23 years old company</li>
+						<li>Our products are localized in 43 languages</li>
+						<li>1.5M room nights are reserved each day</li>
+						<li>Customer, partner and internal facing products</li>
+					</ul>
+				</section>
+				<section>
+					<blockquote class="quote-block" cite="https://medium.com/hubspot-product/people-over-pixels-b962c359a14d">
+						Design system empowers your team to focus on people — not pixels.
+					</blockquote>
+					<cite>- Mariah Muscato</cite>
+				</section>
+				<section class="topic-transition-slide">
+					<h1>VueJS & building a component library</h1>
+				</section>
+				<section>
+					<h2 class="sticky-small-header is-hidden">VueJS & building a component library</h2>
+					<h3>Important disclaimer</h3>
+					<ul>
+						<li>VueJS is not the only framework used @ B.com</li>
+						<li>Main focus: Partner & internal facing products</li>
+					</ul>
+				</section>
+				<section>
+					<h2 class="sticky-small-header is-hidden">VueJS & building a component library</h2>
+					<h3>Why VueJS?</h3>
+					<p style="font-size: 50px;">Simplicity + world-class documentation</p>
+					<a href="https://2018.stateofjs.com/front-end-frameworks/vuejs/">
+						<img src="lib/img/vue-js-stats.png" alt="VueJS - state of JS survery results">
+					</a>
+				</section>
+				<section>
+					<h2 class="sticky-small-header is-hidden">VueJS & building a component library</h2>
+					<h3>Why VueJS?</h3>
+					<a href="https://curated.vuejs.org/">
+						<img src="lib/img/vue-curated.png" alt="Vue curated tools">
+					</a>
+				</section>
+				<section>
+					<h2 class="sticky-small-header is-hidden">VueJS & building a component library</h2>
+					<h3>Where does VueJS fit?</h3>
+					<!-- TODO: replace this... -->
+					<img src="lib/img/system-layers-diagram.png" alt="" class="img-no-border">
+				</section>
+
+				<section>
+					<h2 class="sticky-small-header is-hidden">VueJS & building a component library</h2>
+					<h3>What were the requirements?</h3>
+					<ul>
+						<li>Leverage on raw HTML/CSS/JS solution</li>
+						<li>Clear versioning/distribution strategy</li>
+						<li>Enable community contribution</li>
+						<li>Apply VueJS best practices</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2 class="sticky-small-header is-hidden">VueJS & building a component library</h2>
+					<h3>File structure and naming conventions</h3>
+					<img src="lib/img/folder-structure.png" alt="" class="img-no-border" style="margin-top: -50px;">
+				</section>
+
+				<section>
+					<h2 class="sticky-small-header is-hidden">VueJS & building a component library</h2>
+					<h3>File structure and naming conventions</h3>
+					<img src="lib/img/naming-conventions.png" alt="" class="img-no-border" style="margin-top: -50px;">
+				</section>
+				<section>
+					<h2 class="sticky-small-header is-hidden">VueJS & building a component library</h2>
+					<h3>Code quality: ESLint</h3>
+					<img src="lib/img/pre-commit-linting.gif" alt="">
+				</section>
+
+				<section>
+					<h2 class="sticky-small-header is-hidden">VueJS & building a component library</h2>
+					<h3>Code review (locked <code>master</code>)</h3>
+					<img src="lib/img/master-locked.gif" alt="">
+				</section>
+
+				<section>
+					<h2 class="sticky-small-header is-hidden">VueJS & building a component library</h2>
+					<h3>Scaffolding new components with <code>hygen</code></h3>
+					<img src="lib/img/scaffolding-new-comps.gif" alt="">
+				</section>
+
+				<section>
+					<h2 class="sticky-small-header is-hidden">VueJS & building a component library</h2>
+					<h3>Unit testing with Jest</h3>
+					<img src="lib/img/jest-test.png" alt="" class="img-no-border" style="margin-top: -50px;">
+				</section>
+
+				<section>
+					<h2 class="sticky-small-header is-hidden">VueJS & building a component library</h2>
+					<h3>Unit testing with Jest > Snapshot</h3>
+					<img src="lib/img/jest-snapshots.png" alt="" class="img-no-border">
+				</section>
+
+				<section>
+					<h2 class="sticky-small-header is-hidden">VueJS & building a component library</h2>
+					<h3><code>@vuedoc/md</code> for component API docs</h3>
+					<img src="lib/img/run-docs.gif" alt="">
+				</section>
+
+				<section>
+					<h2 class="sticky-small-header is-hidden">VueJS & building a component library</h2>
+					<h3><code>@vuedoc/md</code> for component API docs</h3>
+					<img src="lib/img/comments-to-docs.png" alt="" class="img-no-border">
+				</section>
+
+				<section>
+					<h2 class="sticky-small-header is-hidden">VueJS & building a component library</h2>
+					<h3>Storybook advanced customizations</h3>
+					<img src="lib/img/webpack-full-control.png" alt="" class="img-no-border" style="margin-top: -50px;">
+				</section>
+
+				<section>
+					<h2 class="sticky-small-header is-hidden">VueJS & building a component library</h2>
+					<h3>Library distribution and versioning</h3>
+					<img src="lib/img/vue-ui-distribution.png" alt="" class="img-no-border" style="margin-top: -50px;">
+				</section>
+
+
+				<section class="topic-transition-slide">
+					<h1>Failures and learnings on the way</h1>
+				</section>
+
+				<section>
+					<h2 class="sticky-small-header is-hidden">Failures and learnings on the way</h2>
+					<h3>Usage of project aliases<br>vs sigle component imports</h3>
+					<img src="lib/img/module-alias.png" alt="" class="img-no-border" style="margin-top: -50px;">
+				</section>
+
+				<section>
+					<h2 class="sticky-small-header is-hidden">Failures and learnings on the way</h2>
+					<h3>Lack of commit convention to facilitate automation of changelog</h3>
+					<img src="lib/img/commits-convention.png" alt="" class="img-no-border" style="margin-top: -50px;">
+				</section>
+
+				<section class="topic-transition-slide">
+					<h1>Key takeways</h1>
+				</section>
+
+				<section>
+					<h2 class="sticky-small-header is-hidden">Key takeways</h2>
+					<h3>Don't underestimate the cost of building a design system from scratch.</h3>
+					<h3>It's a product, not a project!</h3>
+				</section>
+
+				<section>
+					<h2 class="sticky-small-header is-hidden">Key takeways</h2>
+					<h3>Cross collaboration is key.<br>Don't leave it for later.</h3>
+				</section>
+
+				<section>
+					<h2 class="sticky-small-header is-hidden">Key takeways</h2>
+					<h3>Building component library</h3>
+					<ul>
+						<li>Enforce some ESLint rules</li>
+						<li>Automate repetitive tasks</li>
+						<li>Guidelines for contribution</li>
+						<li>Unit testing with jest</li>
+						<li>Agree on commit convention</li>
+						<li>Don't use project aliases</li>
+					</ul>
+				</section>
+
+				<section class="topic-transition-slide">
+					<h1>Resources</h1>
+				</section>
+
+				<section>
+					<h2 class="sticky-small-header is-hidden">Resources</h2>
+					<h3>Vue enterprise boilerplate</h3>
+					<a href="https://github.com/chrisvfritz/vue-enterprise-boilerplate">
+						<img src="lib/img/vue-enterprise-boilerplate.png" alt="" class="img-no-border" style="margin-top: -30px;">
+					</a>
+				</section>
+
+				<section>
+					<h2 class="sticky-small-header is-hidden">Resources</h2>
+					<h3>Reference libs: Vuetify.</h3>
+					<a href="https://vuetifyjs.com/en/">
+						<img src="lib/img/vuetify.png" alt="" class="img-no-border" style="margin-top: -30px;">
+					</a>
+				</section>
+
+				<section>
+					<h2 class="sticky-small-header is-hidden">Resources</h2>
+					<h3>Design Systems book</h3>
+					<a href="https://www.smashingmagazine.com/design-systems-book/">
+						<img src="lib/img/design-systems-book.png" alt="" class="img-no-border">
+					</a>
+				</section>
+
+				<section class="no-handle">
+					<h1>Thank you!</h1>
+					<p>For questions/feedback:<br><a href="https://twitter.com/ramonvictor">@ramonvictor</a></p>
+				</section>
+			</div>
+		</div>
+
+		<div id="header">
+			<div id="header-left"></div>
+			<div id="footer-left"><a href="https://twitter.com/ramonvictor" class="ft-twitter-handle">@ramonvictor</a></div>
+			<svg id="vue-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196.32 170.02">
+				<path fill="#42b883" d="M120.83 0L98.16 39.26 75.49 0H0l98.16 170.02L196.32 0h-75.49z"/>
+				<path fill="#35495e" d="M120.83 0L98.16 39.26 75.49 0H39.26l58.9 102.01L157.06 0h-36.23z"/>
+			</svg>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				history: true,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+
+			var stickyHeader = document.querySelector('#header-left');
+
+			function handleStickyHeader(currentSlide) {
+				var hiddenStickyHeader = currentSlide.querySelector('.sticky-small-header');
+				if (hiddenStickyHeader !== null) {
+					stickyHeader.innerHTML = hiddenStickyHeader.innerHTML
+					stickyHeader.classList.add('is-visible')
+				} else {
+					stickyHeader.innerHTML = ''
+					stickyHeader.classList.remove('is-visible')
+				}
+			}
+
+			function handleTransitionSlide(currentSlide) {
+				var isTranstition = currentSlide.classList.contains('topic-transition-slide');
+				if (isTranstition) {
+					document.querySelector('body').classList.add('transition-slide-bg');
+				} else {
+					document.querySelector('body').classList.remove('transition-slide-bg');
+				}
+			}
+
+			function handleTwitterFooterVisibility(currentSlide) {
+				var isFirst = currentSlide.classList.contains('no-handle');
+				if (isFirst) {
+					document.querySelector('#footer-left').classList.add('is-hidden');
+				} else {
+					document.querySelector('#footer-left').classList.remove('is-hidden');
+				}	
+			}
+
+			function onSlideChange(event) {	
+				handleStickyHeader(event.currentSlide);
+				handleTransitionSlide(event.currentSlide);
+				handleTwitterFooterVisibility(event.currentSlide);
+			}
+
+			Reveal.addEventListener( 'ready', onSlideChange);
+			Reveal.addEventListener('slidechanged', onSlideChange);
+		</script>
+	</body>
+</html>
