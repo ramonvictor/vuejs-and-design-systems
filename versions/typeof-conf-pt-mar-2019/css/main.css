@@ -1,0 +1,210 @@
+body{
+    font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+}
+.reveal h1, .reveal h2, .reveal h3 {
+    color: #2c3e50;
+    text-transform: none;
+    font-family: 'Dosis', "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+}
+
+.reveal h1 {
+    font-size: 3em;
+}
+
+.reveal p, .reveal span, .reveal ul, .reveal ol, .reveal blockquote {
+    color: #606869
+}
+
+.reveal a img,
+.reveal a:hover img,
+.reveal a:active img,
+.reveal .img-no-border{
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    background: none;
+}
+
+.reveal .controls,
+.reveal .progress,
+.reveal .progress span{
+    color: #42b983;
+}
+
+.reveal a {
+    color: #42b983;
+    text-decoration: none;
+}
+
+.reveal a:hover {
+    color: #42b983;
+    text-decoration: underline;
+}
+
+.reveal .profile-picture,
+.reveal .profile-picture:hover{
+    position: absolute;
+    top: -52px;
+    left: 50%;
+    margin-left: -52px;
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #42b983;
+}
+
+.reveal .profile-picture img {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+
+#footer-left {
+    position: absolute;
+    bottom: 24px;
+    left: 23px;
+    z-index: 100;
+}
+
+#footer-left.is-hidden{
+    display: none;
+}
+
+#header-left {
+    position: absolute;
+    left: 23px;
+    top: 24px;
+    font-size: 22px;
+    color: #2c3e50;
+    opacity: 0;
+    transition: .7s linear all;
+    z-index: 100;
+}
+
+#vue-logo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    left: -150px;
+    height: 800px;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+#header-left.is-visible {
+    opacity: 1;
+}
+
+.reveal .quote-block{
+    position: relative;
+    padding-left: 150px;
+    display: block;
+    text-align: left;
+    box-shadow: none;
+    font-size: 56px;
+}
+
+.quote-block::before{
+    color: #00bd7e;
+    content: '"';
+    display: inline-block;
+    position: absolute;
+    left: -78px;
+    top: -78px;
+    font-size: 320px;
+    font-family: Courier;
+}
+
+.reveal cite {
+    color: #b7c5c5;
+    font-size: 35px;
+    display: block;
+    text-align: left;
+    margin-left: 210px;
+}
+
+.ft-twitter-handle{
+    color: #7f8c8d;
+    text-decoration: none;
+    font-size: 22px;
+    font-family: 'Dosis', "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+}
+
+.ft-twitter-handle:hover{
+    color: #42b983;
+}
+
+.sticky-small-header.is-hidden{
+    display: none;
+}
+
+
+.transition-slide-bg{
+    background: #42b983;
+}
+
+.transition-slide-bg #vue-logo{
+    display: none;
+}
+
+.transition-slide-bg h1{
+    color: #fff
+}
+
+.transition-slide-bg .ft-twitter-handle {
+    color: #00ffaa
+}
+
+.reveal .fake-browser{
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 5px 15px 40px rgba(0,0,0,.3);
+}
+
+.reveal .fake-browser img {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: auto;
+    vertical-align: top;
+}
+
+.reveal .fake-browser--header {
+    padding: 20px 25px;
+    text-align: left;
+    border-bottom: 1px solid #e1e1e1;
+    line-height: 0;
+    position: relative;
+}
+
+.reveal .fake-browser--search-bar{
+    font-size: 12px;
+    position: absolute;
+    top: 16px;
+    left: 106px;
+    background: #e1e1e1;
+    padding: 12px 10px;
+    border-radius: 3px;
+    color: #909090;
+    width: 85%;
+}
+
+.reveal .fake-browser--window-actions {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    margin: 0;
+    display: inline-block;
+    background: #ff504c;
+}
+
+.reveal .fake-browser--window-actions.yellow{
+    background: #ffba00
+}
+
+.reveal .fake-browser--window-actions.green{
+    background: #00ce15
+}
